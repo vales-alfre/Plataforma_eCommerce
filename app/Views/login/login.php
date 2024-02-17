@@ -48,9 +48,9 @@ header("Cache-Control: no-cache, must-revalidate");
             </div>
       <?php endif; ?>
       <label for="inputEmail" class="sr-only">Cédula</label>
-      <input type="text" id="cedula" name ="cedula" class="form-control"  maxlength="10" minlength="10" placeholder="Cédula" required autofocus>
+      <input type="text" id="cedula" name ="cedula" class="form-control"  maxlength="10" minlength="10" placeholder="Ingrese su Cédula" required autofocus>
       <label for="inputPassword" class="sr-only">Clave</label>
-      <input type="password" id="clave" name="clave" class="form-control" placeholder="Clave" required>
+      <input type="password" id="clave" name="clave" class="form-control" placeholder="Contraseña" required minlength="6">
       <div class="checkbox mb-3">
         <label>
           <input type="checkbox" value="remember-me"> Recordar mi sesión</label>

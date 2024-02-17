@@ -6,11 +6,11 @@ use CodeIgniter\Model;
 use Exception;
 
 
-class categoria_model extends Model
+class marca_model extends Model
 {
-    protected $table = 'categorias';
-    protected $primaryKey       = 'id';
-    protected $allowedFields = ['nombre_categoria'];
+    protected $table = 'marcas';
+    protected $primaryKey       = 'id_marca';
+    protected $allowedFields = ['nombre_marca'];
     
     public function execQuery($Query){
         $query = $this->db->query($Query);
@@ -20,7 +20,7 @@ class categoria_model extends Model
     
     public function getListado()
     {
-        $query = $this->db->query("SELECT Concat('r_',id_categoria) as dt_rowid, id_categoria as id, nombre_categoria as descripcion  FROM categorias  order by id_categoria;");
+        $query = $this->db->query("SELECT Concat('r_',id_marca) as dt_rowid, id_marca as id, nombre_marca as descripcion  FROM marcas  order by id_marca;");
         return $query->getResultArray();
     }
 

@@ -2,17 +2,16 @@
 
 namespace App\Controllers;
 
-use App\Models\categoria_model;
+use App\Models\producto_model;
+use CodeIgniter\HTTP\ResponseInterface;
+use CodeIgniter\Files\File;
 
-
-class Categoria extends BaseController
+class Producto extends BaseController
 {
 
-  
-
     ///////////// JSON /////////////////////////
-    public function getjson_ListadoCategorias($ArrayName) {
-        $model = new categoria_model();
+    public function getjson_ListadoProductos($ArrayName) {
+        $model = new producto_model();
         $datos = $model->getListado();
         if ($datos) 
             if($ArrayName!="")
@@ -23,14 +22,18 @@ class Categoria extends BaseController
     }
 
 
-    public function insertCategoria()
+    public function insertProducto()
     {
         $input = $this->getRequestInput($this->request);
 
         $rules = [
+            'idcategoria' => [
+                'rules'  => 'required|numeric',
+                'errors' => ['required' => 'IDMarca del producto requerido','numeric' => 'IDMarca debe ser numérica'],
+            ],
             'descripcion' => [
-                'rules'  => 'required|max_length[100]',
-                'errors' => ['required' => 'Descripción de la Categoría requerida'],
+                'rules'  => 'required|min_length[3]|max_length[100]',
+                'errors' => ['required' => 'Descripción del Producto  requerida', 'min_length' => 'La descripción debe tener al menos 3 caracteres' ],
             ]
         ];
 
@@ -39,15 +42,15 @@ class Categoria extends BaseController
             return $this->sendResponse(['validaciones' => $this->getErrorsAsArray($this->validator->getErrors())], ResponseInterface::HTTP_BAD_REQUEST);
 
         try {
-            $model = new categoria_model();
+            $model = new producto_model();
             $model->insert($input);
-            return $this->sendResponse(['message' => 'Categoría creada correctamente. ID: ' . $model->getInsertID()]);
+            return $this->sendResponse(['message' => 'Producto creado correctamente. ID: ' . $model->getInsertID()]);
         } catch (Exception $e) {
             return $this->sendResponse(['error' => $e->getMessage()], ResponseInterface::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
-    public function updateCategoria($id)
+    public function updateProducto($id)
     {
         if (!isset($id))         return $this->sendBadRequest('Parámetro ID requerido');
         if (!is_numeric($id))    return $this->sendBadRequest('Parámetro ID numérico');
@@ -55,16 +58,18 @@ class Categoria extends BaseController
 
         $input = $this->getRequestInput($this->request);
 
-        $model = new categoria_model();
+        $model = new producto_model();
         $subc = $model->findById($id); 
-        if(!$subc) return $this->sendBadRequest("Categoría a actualizar No existe");
-        
-        
+        if(!$subc) return $this->sendBadRequest("Producto a actualizar No existe");
 
         $rules = [
+            'idcategoria' => [
+                'rules'  => 'required|numeric',
+                'errors' => ['required' => 'IDMIDCategoríaarca del producto requerido','numeric' => 'IDCategoría debe ser numérica'],
+            ],
             'descripcion' => [
-                'rules'  => 'required|max_length[100]',
-                'errors' => ['required' => 'Descripción de la Categoría requerida'],
+                'rules'  => 'required|min_length[3]|max_length[100]',
+                'errors' => ['required' => 'Descripción del Producto  requerida', 'min_length' => 'La descripción debe tener al menos 3 caracteres' ],
             ]
         ];
 
@@ -75,28 +80,27 @@ class Categoria extends BaseController
 
        try {
             $model->update($id, $input);
-            return $this->sendResponse(['message' => 'Categoría editada correctamente']);
+            return $this->sendResponse(['message' => 'Producto editado correctamente']);
         } catch (Exception $e) {
             return $this->sendResponse(['error' => $e->getMessage()], ResponseInterface::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
-    public function deleteCategoria($id)
+    public function deleteProducto($id)
     {
         if (!isset($id))         return $this->sendBadRequest('Parámetro ID requerido');
         if (!is_numeric($id))    return $this->sendBadRequest('Parámetro ID numérico');
         if ($id < 1)             return $this->sendBadRequest('Parámetro ID numérico mayor a 0');
 
 
-        $model = new categoria_model();
+        $model = new producto_model();
         $subc = $model->findById($id); 
-        if(!$subc) return $this->sendBadRequest("Categoría a eliminar No existe");
+        if(!$subc) return $this->sendBadRequest("Producto a eliminar No existe");
         
-        if($model->hasSubCategorias($id)) return $this->sendBadRequest("Categoría ".$subc['descripcion']." tiene SubCategorías registradas, NO se puede eliminar");
         
        try {
             $model->delete($id);
-            return $this->sendResponse(['message' => 'Categoría eliminada correctamente']);
+            return $this->sendResponse(['message' => 'Producto eliminado correctamente']);
         } catch (Exception $e) {
             return $this->sendResponse(['error' => $e->getMessage()], ResponseInterface::HTTP_INTERNAL_SERVER_ERROR);
         }

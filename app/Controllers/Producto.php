@@ -29,11 +29,15 @@ class Producto extends BaseController
         $rules = [
             'idcategoria' => [
                 'rules'  => 'required|numeric',
-                'errors' => ['required' => 'IDMarca del producto requerido','numeric' => 'IDMarca debe ser numérica'],
+                'errors' => ['required' => 'IDCategoría del producto requerido','numeric' => 'IDCategoría debe ser numérica'],
             ],
             'descripcion' => [
                 'rules'  => 'required|min_length[3]|max_length[100]',
                 'errors' => ['required' => 'Descripción del Producto  requerida', 'min_length' => 'La descripción debe tener al menos 3 caracteres' ],
+            ],
+            'impuesto' => [
+                'rules'  => 'required|less_than_equal_to[12]',
+                'errors' => ['required' => 'Impuesto del Producto  requerido', 'less_than_equal_to' => 'EL Impuesto debe ser menor o igual a 12%' ],
             ]
         ];
 

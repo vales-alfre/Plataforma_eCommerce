@@ -9,6 +9,14 @@ use CodeIgniter\Files\File;
 class Producto extends BaseController
 {
 
+    public function add(): string
+    {
+       
+        return view('producto/add');
+        
+    }
+
+
     ///////////// JSON /////////////////////////
     public function getjson_ListadoProductos($ArrayName) {
         $model = new producto_model();

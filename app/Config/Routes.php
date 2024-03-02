@@ -20,6 +20,8 @@ $routes->group('',['filter' => 'AuthCheck'], function ($routes) {
    $routes->post('producto/add', 'Producto::insertProducto');
    $routes->post('producto/update/(:num)', 'Producto::updateProducto/$1');
    $routes->get('producto/delete/(:num)', 'Producto::deleteProducto/$1');
+   
+
 
  });
 

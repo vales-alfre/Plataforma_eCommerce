@@ -23,18 +23,18 @@
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template-->
-    <link href="<?= base_url(); ?>assets/css/sb-admin-2.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/css/icon.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/c/favicon.ico" rel="icon">
+    <link href="assets/css/sb-admin-2.css" rel="stylesheet">
+    <link href="assets/css/icon.css" rel="stylesheet">
+    <link href="assets/imgs/favicon.ico" rel="icon">
     
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
 
 
     <!-- DataTable style -->
-    <link href="<?=base_url();?>assets/vendor/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="assets/vendor/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
 
       <!-- Bootstrap CSS File -->
-    <link href="<?=base_url();?>assets/vendor/bootstrap46/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap46/css/bootstrap.min.css" rel="stylesheet">
 
 
 </head>
@@ -204,7 +204,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= session()->get('nombres') ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usr: <?= session()->get('nombres') ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="assets/imgs/undraw_profile.svg">
                             </a>
@@ -337,23 +337,23 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url(); ?>assets/vendor/bootstrap46/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap46/js/bootstrap.bundle.min.js"></script>
 
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url(); ?>assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url(); ?>assets/js/sb-admin-2.min.js"></script>
+    <script src="assets/js/sb-admin-2.min.js"></script>
 
     <!-- Data table -->
-    <script src="<?=base_url();?>assets/vendor/datatable/jquery.dataTables.min.js"></script>
-    <script src="<?=base_url();?>assets/vendor/datatable/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/vendor/datatable/jquery.dataTables.min.js"></script>
+    <script src="assets/vendor/datatable/dataTables.bootstrap4.min.js"></script>
 
-    <script src="<?=base_url();?>assets/js/jsFunctions.js"></script>
-    <script src="<?=base_url();?>assets/js/funciones.js"></script>
-    <script src="<?=base_url();?>assets/js/jsValidationsForms.js"></script>
+    <script src="assets/js/jsFunctions.js"></script>
+    <script src="assets/js/funciones.js"></script>
+    <script src="assets/js/jsValidationsForms.js"></script>
 
 
     

@@ -24,7 +24,7 @@ class Usuario extends BaseController
                     'existsUser' => 'Usuario NO registrado'
                 ],
                 'clave' => [
-                    'validateUser' => "Cédula y Clave no son correctas",
+                    'validateUser' => "Usuario y Clave no son correctas",
                     'required' => 'Ingrese una clave',
                     'min_length' => 'Clave debe contener mínimo 8 dígitos',
                     'max_length' => 'Clave debe contener máximo 20 dígitos'

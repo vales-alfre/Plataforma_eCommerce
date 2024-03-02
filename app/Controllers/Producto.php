@@ -9,12 +9,13 @@ use CodeIgniter\Files\File;
 class Producto extends BaseController
 {
 
-    public function add(): string
+    public function addproducto(): string
     {
-       
-        return view('producto/add');
+        return view('producto/addproducto');
         
-    }
+    } 
+
+    
 
 
     ///////////// JSON /////////////////////////

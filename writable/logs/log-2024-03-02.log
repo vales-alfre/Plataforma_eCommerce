@@ -158,3 +158,25 @@ in SYSTEMPATH\Session\Handlers\FileHandler.php on line 160.
 14 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuario))
 15 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 16 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-02 18:16:40 --> Undefined property: CodeIgniter\View\View::$session
+in APPPATH\Views\producto\addproducto.php on line 230.
+ 1 APPPATH\Views\producto\addproducto.php(230): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$session', 'C:\\xampp\\htdocs\\tienda\\app\\Views\\producto\\addproducto.php', 230)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\tienda\\app\\Views\\producto\\addproducto.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('producto/addproducto', [], true)
+ 5 APPPATH\Controllers\Producto.php(14): view('producto/addproducto')
+ 6 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Producto->addproducto()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-02 18:18:23 --> Undefined property: CodeIgniter\View\View::$session
+in APPPATH\Views\producto\addproducto.php on line 230.
+ 1 APPPATH\Views\producto\addproducto.php(230): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: CodeIgniter\\View\\View::$session', 'C:\\xampp\\htdocs\\tienda\\app\\Views\\producto\\addproducto.php', 230)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\tienda\\app\\Views\\producto\\addproducto.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('producto/addproducto', [], true)
+ 5 APPPATH\Controllers\Producto.php(14): view('producto/addproducto')
+ 6 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Producto->addproducto()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Producto))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

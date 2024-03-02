@@ -8,7 +8,10 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->group('',['filter' => 'AuthCheck'], function ($routes) {
    
+  $routes->get('producto/add_nuevo', 'Producto::addproducto');
+
    $routes->get('panel', 'Home::panel');
+   
 
    $routes->get('categoria/getlistadoCB', 'Categoria::getjson_ListadoCategorias/');
    $routes->get('marca/getlistadoCB/', 'Marca::getjson_ListadoMarcasCB/');
@@ -24,6 +27,8 @@ $routes->group('',['filter' => 'AuthCheck'], function ($routes) {
 
 
  });
+
+ 
 
  $routes->get('/', 'Login::index');
  $routes->get('login', 'Login::index');

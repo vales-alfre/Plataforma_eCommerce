@@ -12,38 +12,15 @@
     <title>Tienda Virtual 2024</title>
 
     <!-- Custom fonts for this template-->
-    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    
+    <link href="<?=base_url();?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-
-    <!-- DataTable style -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-        <!-- Custom styles for this template-->
-    <link href="<?= base_url(); ?>assets/css/sb-admin-2.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/css/icon.css" rel="stylesheet">
-    <link href="<?= base_url(); ?>assets/c/favicon.ico" rel="icon">
-    
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-
-
-    <!-- DataTable style -->
-    <link href="<?=base_url();?>assets/vendor/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
-
-      <!-- Bootstrap CSS File -->
-    <link href="<?=base_url();?>assets/vendor/bootstrap46/css/bootstrap.min.css" rel="stylesheet">
-
+    <!-- Custom styles for this template-->
+    <link href="<?=base_url();?>assets/css/sb-admin-2.css" rel="stylesheet">
 
 </head>
-
-<style>
-    table.dataTable tbody td {
-     vertical-align: middle;
-}
-</style>
 
 <body id="page-top">
 
@@ -204,9 +181,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usr:<?= session()->get('nombres') ?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
                                 <img class="img-profile rounded-circle"
-                                    src="assets/imgs/undraw_profile.svg">
+                                    src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -241,36 +218,98 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Listado de Productos</h1>
-                    </div>
+                        <h1 class="h3 mb-0 text-gray-800">Agregar Nuevo Producto</h1>
+                    </div>     
                     
-                    <table id="tabla" class="table  table-bordered" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Categoría</th>
-                                <th>Marca</th>
-                                <th>Descripción</th>
-                                <th>PVP</th>
-                                <th>Impuesto</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                         <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Categoría</th>
-                                <th>Marca</th>
-                                <th>Descripción</th>
-                                <th>PVP</th>
-                                <th>Impuesto</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div> 
+                    <form id="frmMainRegProducto" name="frmMainRegProducto" data-aos="fade-in"  method="post" enctype="multipart/form-data">
+                        
+                        <div class="card">
+                        
+                            <div class="card-header h6">DATOS DEL PRODUCTO</div>
+                            
+                            
+                                
+                                <div class="row mb-2" style="margin: 0.5em 0.5em 0.5em 0.5em;">
+
+                                    <div class="col-sm-4" style="margin: 0.5em 0.5em 0.5em 0.5em;">
+                                      <label for="regCategoria"><i class="fas fa-tablet-alt"></i> Categorías</label>
+                                        <select id="regCategoria" name="regCategoria" class="custom-select" required>
+                                        </select>
+                                        <div class="valid-feedback">Categoría válida</div>
+                                        <div class="invalid-feedback">Categoría NO válida</div>
+                                    </div>
+                                    
+                                    <div class="col-sm-7" style="margin: 0.5em 0.5em 0.5em 0.5em;">
+                                        <label for="regMarca"><i class="fas fa-trademark"></i> Marcas</label>
+                                          <select id="regMarca" name="regMarca" class="custom-select" required>
+                                            
+                                          </select>
+                                        
+                                        <div class="invalid-feedback">Seleccione una Marca</div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-2" style="margin: 0.5em 0.5em 0.5em 0.5em;">
+
+                                <div class="col-sm-11" style="margin: 0.5em 0.5em 0.5em 0.5em;">
+                                    <label for="regDescripcion"><i class="fas fa-star"></i> Descripción </label>
+                                    <input 
+                                      id="regDescripcion" 
+                                      name="regDescripcion" 
+                                      type="text" 
+                                      class="form-control" 
+                                      style="text-transform:uppercase"
+                                      maxlength="100"
+                                      minlength="3"
+                                      placeholder="Descripción del producto"
+                                      required>
+                                    <div class="valid-feedback">Descripción válido</div>
+                                    <div class="invalid-feedback">Escriba la Descripción del Producto</div>
+                                </div>
+                                </div>
+                          
+                                
+                                <div class="row mb-2" style="margin: 0.5em 0.5em 0.5em 0.5em;">
+
+                                    <div class="col-sm-4" style="margin: 0.5em 0.5em 0.5em 0.5em;">
+                                        <label for="txtPrecio">Precio Costo</label>
+                                        <input type="number" class="form-control" id="txtPrecio" name="txtPrecio" step="0.01" value="0.00">
+                                        <small class="form-text text-muted">Introduce un número con hasta dos decimales.</small>
                     
-                    
+                                        <div class="invalid-feedback">Precio Costo NO válido</div>
+                                        <div class="valid-feedback">Precio Costo válido</div>
+                                    </div>
+                                    
+                                    <div class="col-sm-4" style="margin: 0.5em 0.5em 0.5em 0.5em;">
+                                        <label for="txtPVP">PVP</label>
+                                        <input type="number" class="form-control" id="txtPVP" name="txtPVP" step="0.01" value="0.00" required>
+                                        <small class="form-text text-muted">Introduce un número con hasta dos decimales.</small>
+                                       
+                                        <div class="invalid-feedback">PVP NO válido</div>
+                                        <div class="valid-feedback">PVP correcto</div>
+                                    </div>
+
+                                    <div class="col-sm-3" style="margin: 0.5em 0.5em 0.5em 0.5em;">
+                                        <label for="txtImpuesto">% Impuesto</label>
+                                        <input type="number" class="form-control" id="txtImpuesto" name="txtImpuesto" step="0.01" value="0.00" max="12">
+                                        <small class="form-text text-muted">Introduce un número con hasta dos decimales.</small>
+                                        
+                                        <div class="invalid-feedback">Impuesto NO válido</div>
+                                    </div>
+                                </div>
+                           
+                        
+                        </div>
+                            
+                        
+                            <div class="card-footer">
+                                <div class="col-6" style="text-align: right;">
+                                    <a id="regSubmit" class="btn btn-primary">Registrar</a>
+                                </div>
+                            </div>
+                        
+                      
+                </form> 
 
                  
 
@@ -298,25 +337,6 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-      <!-- Logout Modal-->
-      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Seguro desea salir?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Presione "Salir" para cerrar la sesión del sistema</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="<?=base_url();?>logout">Salir</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Logout Modal-->
     <div class="modal fade" id="modalSms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -337,30 +357,41 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="<?= base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
-    <script src="<?= base_url(); ?>assets/vendor/bootstrap46/js/bootstrap.bundle.min.js"></script>
-
+    <script src="<?=base_url();?>assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?=base_url();?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="<?= base_url(); ?>assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="<?=base_url();?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<?= base_url(); ?>assets/js/sb-admin-2.min.js"></script>
-
-    <!-- Data table -->
-    <script src="<?=base_url();?>assets/vendor/datatable/jquery.dataTables.min.js"></script>
-    <script src="<?=base_url();?>assets/vendor/datatable/dataTables.bootstrap4.min.js"></script>
-
-    <script src="<?=base_url();?>assets/js/jsFunctions.js"></script>
-    <script src="<?=base_url();?>assets/js/funciones.js"></script>
+    <script src="<?=base_url();?>assets/js/sb-admin-2.min.js"></script>
     <script src="<?=base_url();?>assets/js/jsValidationsForms.js"></script>
+    <script src="<?=base_url();?>assets/js/funciones.js"></script>
+
 
 
     
 
     <script type="text/javascript">
 
-        showListadoProductos();
+        fillLista('http://localhost/tienda/categoria/getlistadoCB','regCategoria',-1,true);
+        fillLista('http://localhost/tienda/marca/getlistadoCB','regMarca',-1,true);
+
+        $("#regSubmit").click(function (e) {
+            $("#frmMainRegProducto").addClass("was-validated");
+
+            var resp=fxValidaFrm();
+            if(resp==""){
+
+                fxSaveProducto();
+                
+            }else showErrorModalMsg('Error al registrar Producto', resp) ;
+
+
+        });
+    
+            
+    
     
     
     </script>

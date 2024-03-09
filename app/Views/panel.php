@@ -12,17 +12,30 @@
     <title>Tienda Virtual 2024</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
-    <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
 
     <!-- DataTable style -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+        <!-- Custom styles for this template-->
+    <link href="<?= base_url(); ?>assets/css/sb-admin-2.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/css/icon.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/imgs/logotienda.png" rel="icon">
+    
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+
+
+    <!-- DataTable style -->
+    <link href="<?=base_url();?>assets/vendor/datatable/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+      <!-- Bootstrap CSS File -->
+    <link href="<?=base_url();?>assets/vendor/bootstrap46/css/bootstrap.min.css" rel="stylesheet">
+
 
 </head>
 
@@ -187,13 +200,42 @@
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
                         
+                     <!-- Nav Item - AlerCts -->
+                     <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                            
+                                <span class="badge badge-danger badge-counter"><div id="countitems">0</div></span>
+                            </a>
+                            <!-- Dropdown - Alerts -->
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Items del Carrito
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 12, 2019</div>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                    </div>
+                                </a>
+                                
+                            </div>
+                        </li>
+
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrador</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Usr: <?= session()->get('nombres') ?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="assets/imgs/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -226,35 +268,19 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Listado de Productos</h1>
+                        <!-- Main Area -->
+                        <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-primary" id="MainPageContentTitle" name="MainPageContentTitle">
+                            </h6>
+                        </div>
+                        <div class="card-body" id="MainPageContent" name="MainPageContent">
+                        
+
+                        </div>
                     </div>
                     
-                    <table id="tabla" class="table  table-bordered" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Categoría</th>
-                                <th>Marca</th>
-                                <th>Descripción</th>
-                                <th>PVP</th>
-                                <th>Impuesto</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                         <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Categoría</th>
-                                <th>Marca</th>
-                                <th>Descripción</th>
-                                <th>PVP</th>
-                                <th>Impuesto</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </tfoot>
-                    </table>
+                   
                 </div> 
                     
                     
@@ -285,6 +311,25 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Seguro desea salir?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Presione "Salir" para cerrar la sesión del sistema</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                    <a class="btn btn-primary" href="<?=base_url();?>logout">Salir</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Logout Modal-->
     <div class="modal fade" id="modalSms" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -305,28 +350,33 @@
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url(); ?>assets/vendor/bootstrap46/js/bootstrap.bundle.min.js"></script>
 
-     <!-- Data table -->
-     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="<?= base_url(); ?>assets/vendor/jquery.easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
-    <script src="js/jsValidationsForms.js"></script>
-    <script src="js/funciones.js"></script>
+    <script src="<?= base_url(); ?>assets/js/sb-admin-2.min.js"></script>
 
+    <!-- Data table -->
+    <script src="<?=base_url();?>assets/vendor/datatable/jquery.dataTables.min.js"></script>
+    <script src="<?=base_url();?>assets/vendor/datatable/dataTables.bootstrap4.min.js"></script>
+
+    <script src="<?=base_url();?>assets/js/jsFunctions.js"></script>
+    <script src="<?=base_url();?>assets/js/funciones.js"></script>
+    <script src="<?=base_url();?>assets/js/jsValidationsForms.js"></script>
 
 
     
 
     <script type="text/javascript">
 
-        showListadoProductos();
+        $(document).ready(function() {
+            ajaxLoadContentPanel('producto/lista', "Lista Productos");
+            ajaxLoadCountItemsCar('carrito/countitems');
+        });
     
     
     </script>

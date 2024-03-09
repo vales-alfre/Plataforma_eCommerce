@@ -8,7 +8,7 @@ class Home extends BaseController
     public function panel(): string
     {
        
-        return view('listadoproductos');
+        return view('panel');
         
     }
 

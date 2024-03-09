@@ -24,7 +24,15 @@ $routes->group('',['filter' => 'AuthCheck'], function ($routes) {
    $routes->post('producto/update/(:num)', 'Producto::updateProducto/$1');
    $routes->get('producto/delete/(:num)', 'Producto::deleteProducto/$1');
    
-
+   $routes->get('producto/lista', 'Producto::viewProductosGrid/0/0/1');
+   $routes->get('producto/lista/(:num)', 'Producto::viewProductosGrid/$1/0/1');
+   $routes->get('producto/lista/(:num)/(:num)', 'Producto::viewProductosGrid/$1/$2/1');
+  
+   $routes->get('carrito/add/(:num)', 'Carrito::addProducto/$1');
+   $routes->get('carrito/countitems', 'Carrito::getCountNotifications');
+   $routes->get('carrito/list', 'Carrito::getItemsNotifications');
+   $routes->get('carrito/clear', 'Carrito::deleteProducts');
+   $routes->get('carrito/vista_listaitems', 'Carrito::viewProductosGrid');
 
  });
 
@@ -36,4 +44,5 @@ $routes->group('',['filter' => 'AuthCheck'], function ($routes) {
  $routes->get('logout', 'Usuario::logout');
 
 
-   
+ 
+  

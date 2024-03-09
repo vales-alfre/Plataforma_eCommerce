@@ -46,4 +46,23 @@ function showListadoProductos() {
 }
 
 
+function ajaxLoadContentPanel(Url, Titulo) {
+  $.ajax({
+      url: Url,
+  }).done(function (data) {
+      $("#MainPageContentTitle").html(Titulo);
+      $("#MainPageContent").html(data);
+  });
+}
+
+
+function ajaxLoadCountItemsCar(Url) {
+  $.ajax({
+      url: Url,
+  }).done(function (data) {
+    data = JSON.parse(data);
+     $("#countitems").html(data['cantidad'] + "+");
+  });
+}
+
 

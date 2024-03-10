@@ -15,6 +15,11 @@ class Producto extends BaseController
         
     } 
 
+    public function listadoproductos(): string
+    {
+        return view('producto/listadoproductos');
+        
+    } 
     public function viewProductosGrid($IDCat, $IDMarca, $publicView): string
     {
         if (!is_numeric($IDCat))     return $this->sendBadRequest('Parámetro IDCat NO numérico');

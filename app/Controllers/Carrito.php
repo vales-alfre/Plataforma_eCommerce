@@ -43,7 +43,6 @@ class Carrito extends BaseController
         $model = new producto_model();
         $producto = $model->findById($id); 
         if(!$producto) return $this->sendBadRequest("Producto a agregar No existe");
-        
 
         $carro_session = array();
         $session = session();
@@ -63,9 +62,11 @@ class Carrito extends BaseController
         }else {
                 $item = [
                     "cantidad" => 1,
-                    "descripcion" => $producto['descripcion'],
-                    "categoria" => $producto['idcategoria'],
-                    "valor" => $producto['pvp'],
+                    "descripcion" => $producto[0]['descripcion'],
+                    "categoria" => $producto[0]['categoria'],
+                    "marca" => $producto[0]['marca'],
+                    "valor" => $producto[0]['pvp'],
+                    "foto" => $producto[0]['foto'],
                 ];
                 $carro_session[$id] = $item;
         }
@@ -74,9 +75,7 @@ class Carrito extends BaseController
         $session->set('total_precio', $session->get('total_precio') + $item['valor'] );
         $session->set('carro', $carro_session);
 
-        echo json_encode($session->get('carro'));
-
-        //return $this->sendResponse(['message' => 'Producto agregado correctamente.']);
+        return $this->sendResponse(['message' => 'Producto agregado correctamente.']);
     }
 
     public function getItemsNotifications()
@@ -98,8 +97,8 @@ class Carrito extends BaseController
         $item = array();
         if ($session->has('carro')){
             $item = [
-                "cantidad" => $session->get('items'),
-                "total_precio" => $session->get('total_precio')
+                "cantidad" =>  $session->get('items'),
+                "total_precio" => number_format($session->get('total_precio'),2)
             ];
         }else{
             $item = [

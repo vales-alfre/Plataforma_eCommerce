@@ -20,7 +20,7 @@
 
 
     <!-- DataTable style -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
         <!-- Custom styles for this template-->
     <link href="<?= base_url(); ?>assets/css/sb-admin-2.css" rel="stylesheet">
@@ -66,7 +66,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="javascript:ajaxLoadContentPanel('dashboard','');">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -104,8 +104,10 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Productos</h6>
-                        <a class="collapse-item" href="listaproducto.html">Listado</a>
-                        <a class="collapse-item" href="addproducto.html">Crear Nuevo</a>
+                        <a class="collapse-item" href="javascript:ajaxLoadContentPanel('producto/lista', 'Lista de Productos')">Listado</a>
+                        <a class="collapse-item" href="javascript:ajaxLoadContentPanel('producto/nuevo', 'Agregar Producto')">Crear Nuevo</a>
+                        
+                        <a class="collapse-item" href="javascript:ajaxLoadContentPanel('producto/lista_grid', 'Lista de Productos')">Listado_Grid</a>
                         
                     </div>
                 </div>
@@ -204,27 +206,16 @@
                      <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                            
+                                <i class="fas fa-shopping-cart"></i>
                                 <span class="badge badge-danger badge-counter"><div id="countitems">0</div></span>
                             </a>
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
-                                    Items del Carrito
+                                    Items del Carrito $<span id="totalitems">0</span>
                                 </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
+                                <div id="listaitemscart"><div>
                                 
                             </div>
                         </li>
@@ -368,13 +359,18 @@
     <script src="<?=base_url();?>assets/js/funciones.js"></script>
     <script src="<?=base_url();?>assets/js/jsValidationsForms.js"></script>
 
+    <!-- Page level plugins -->
+    <script src="<?=base_url();?>assets/vendor/chart.js/Chart.min.js"></script>
 
+    <!-- Page level custom scripts -->
+    <script src="<?=base_url();?>assets/js/demo/chart-area-demo.js"></script>
+    <script src="<?=base_url();?>assets/js/demo/chart-pie-demo.js"></script>
     
 
     <script type="text/javascript">
 
         $(document).ready(function() {
-            ajaxLoadContentPanel('producto/lista', "Lista Productos");
+            ajaxLoadContentPanel('dashboard', "");
             ajaxLoadCountItemsCar('carrito/countitems');
         });
     

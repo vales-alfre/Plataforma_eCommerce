@@ -55,8 +55,14 @@
                     <img src="assets/imgs/productos/'.$row['foto'].'" alt="" class="img-thumbnail" >
                     <p class="text-wrap "><h5>'.$row['descripcion'].'</h5></p></a>
 
-                    <div style="text-align:center">
                     
+                    <div style="text-align:center">
+                    <ul class="social mb-0 list-inline mt-3">
+                      <li class="list-inline-item m-1">
+                      <a href="javascript:addItemToCart('.$row['id'].')" class="social-link">
+                      <i class="fas fa-shopping-cart"></i> Add cart</a> </li>
+                   </ul>
+                   
                    </div>
                   </div>
                 </div>

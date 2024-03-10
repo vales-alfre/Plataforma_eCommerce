@@ -20,15 +20,22 @@ class producto_model extends Model
    
     public function getListado()
     {
-        $query = $this->db->query("SELECT Concat('r_',id) as dt_rowid, c.nombre_categoria as idcategoria, m.nombre_marca as idmarca, p.descripcion, precio, pvp, impuesto, foto 
+        $query = $this->db->query("SELECT Concat('r_',id) as dt_rowid, c.nombre_categoria as idcategoria, m.nombre_marca as idmarca, p.id, p.descripcion, precio, pvp, impuesto, foto 
          FROM producto p, categorias c, marcas m where p.idcategoria = c.id_categoria and p.idmarca = m.id_marca  order by id;");
         return $query->getResultArray();
     }
 
     public function findById($id)
     {
-       return $this->asArray()->where(['id' => $id])->first();
+        $query = $this->db->query("SELECT c.nombre_categoria as categoria, m.nombre_marca as marca, p.descripcion, precio, pvp, impuesto, foto 
+         FROM producto p, categorias c, marcas m where p.idcategoria = c.id_categoria and p.idmarca = m.id_marca and p.id=".$id." order by id;");
+        return $query->getResultArray();
     }
+
+    /*public function findById()
+    {
+       return $this->asArray()->where(['id' => $id])->first();
+    }*/
 
 
     public function getListadoGrid($IDCat, $IDMarca) {

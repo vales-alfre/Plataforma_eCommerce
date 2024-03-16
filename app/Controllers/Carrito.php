@@ -20,20 +20,6 @@ class Carrito extends BaseController
     }
 
 
-
-    ///////////// JSON /////////////////////////
-    public function getjson_ListadoProductos($ArrayName) {
-        $model = new producto_model();
-        $datos = $model->getListado();
-        if ($datos) 
-            if($ArrayName!="")
-                 echo json_encode([$ArrayName => $datos]);
-            else
-            echo json_encode($datos);
-    
-    }
-
-
     public function addProducto($id)
     {
         if (!isset($id))         return $this->sendBadRequest('Parámetro ID requerido');

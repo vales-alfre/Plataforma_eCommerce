@@ -36,6 +36,10 @@ $routes->group('',['filter' => 'AuthCheck'], function ($routes) {
    $routes->get('carrito/clear', 'Carrito::deleteProducts');
    $routes->get('carrito/vista_listaitems', 'Carrito::viewProductosGrid');
 
+   $routes->get('carrito/vista_listaitemstopay', 'Carrito::viewProductosToPay');
+   $routes->get('payphone/response', 'Carrito::responsePayPhone');
+   $routes->get('payphone/done/(:any)/(:any)', 'Carrito::responsePayPhoneDone/$1/$2');
+
  });
 
  

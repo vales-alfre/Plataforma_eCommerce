@@ -367,14 +367,13 @@
     <script src="<?=base_url();?>assets/js/demo/chart-pie-demo.js"></script>
     
 
-    <script type="text/javascript">
+    <script src="https://pay.payphonetodoesposible.com/api/button/js?appId=wgf56Tv9tUG3fpVsiviE7w"></script>
 
+    <script type="text/javascript">
         $(document).ready(function() {
-            ajaxLoadContentPanel('dashboard', "");
-            ajaxLoadCountItemsCar('carrito/countitems');
-        });
-    
-    
+                    ajaxLoadContentPanel('dashboard', '');
+                    ajaxLoadCountItemsCar('carrito/countitems');
+                });
     </script>
 
 </body>

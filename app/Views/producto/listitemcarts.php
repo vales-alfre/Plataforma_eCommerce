@@ -15,6 +15,12 @@
         </a>' ;
         
     }
+
+    echo '<h7 style="background:white; color:black" class="dropdown-header">
+    
+    <i style="color:green" class="fa fa-credit-card fa-2x" aria-hidden="true">
+    </i> <a href="javascript:ajaxLoadContentPanel(\'carrito/vista_listaitemstopay\', \'Lista de Productos\')">Pagar</a>
+    </h7>';
     
 
 ?>

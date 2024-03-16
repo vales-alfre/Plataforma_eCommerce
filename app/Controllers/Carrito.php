@@ -9,7 +9,16 @@ use CodeIgniter\Files\File;
 class Carrito extends BaseController
 {
 
-    
+    public function viewProductosToPay(): string
+    {
+        $session = session();
+        if ($session->has('carro'))
+           return view('producto/listitemcartstopay', ['data' => $session->get('carro')]);
+        else 
+            return view('producto/listitemcartstopay',  ['data' => null]);
+    }
+
+
     public function viewProductosGrid(): string
     {
         $session = session();
@@ -102,6 +111,58 @@ class Carrito extends BaseController
         $session->set('items', 0);
         $session->set('total_precio','0.00');
         $session->remove('carro');
+    }
+
+
+    public function responsePayPhoneDone($authorizationCode,$transactionStatus): string
+    {
+       return view('producto/listitemcartsdone', 
+       ['authorizationCode' => $authorizationCode,
+        'transactionStatus'=> $transactionStatus ]);
+    }
+
+
+    public function responsePayPhone()
+    {
+
+        $transaccion = $_GET["id"];
+        $client = $_GET["clientTransactionId"];
+
+        $data_array = array(
+            "id"=> $transaccion,
+            "clientTxId"=>$client );
+        
+        $data = json_encode($data_array);
+
+        //Iniciar Llamada
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, "https://pay.payphonetodoesposible.com/api/button/V2/Confirm");
+        curl_setopt($curl, CURLOPT_POST, 1);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+        curl_setopt_array($curl, array(
+            CURLOPT_HTTPHEADER => array(
+            "Authorization: Bearer 7lzTn34_S-my5JSJaJbNNWDyCT61l1_dd_q-Vu5cTbIhzoEjGzXaoFORklZQSl-2lWjkDzn3C3Qp76X_RCkwtGvuWgyiyGmblF7DNqVXrCB0f-ER-QzH_atWB6aHkbdgwaVenLLu_Y5LmMlKAWetJYUOgUP03l0DcTlpVh1kja5fXErA1ajqBNBE5gDFhnY2KGs06xKxbtItv5oBNYUeb4ZAXv9MaSibdd--6TP05K9g0icAEJOiyZ68f_xAbYxI4oQGps_ly8VXAqUnvlJq0q-faV2gMAs-BwCirVfslIX3DaUlBjkz67DjZNYmCj4psdPK3A", "Content-Type:application/json"),
+        ));
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $result = curl_exec($curl);
+        curl_close($curl);
+
+        if ($result !== false && curl_errno($curl) == 0) {
+            $jsonObject = json_decode($result);
+            if (json_last_error() == JSON_ERROR_NONE) {
+                $this->deleteProducts();
+                return view('producto/listitemcartsdone', 
+                    ['authorizationCode' => $jsonObject->authorizationCode,
+                    'transactionStatus'=> $jsonObject->transactionStatus ]);
+            } else {
+                return view('producto/listitemcartstopay', ['data' => $session->get('carro'),
+                                                            'error_msg'=>"Error al decodificar JSON: " .json_last_error_msg() ]);
+            }
+        } else {
+            return view('producto/listitemcartstopay', ['data' => $session->get('carro'),
+            'error_msg'=>"Error al ejecutar cURL: " . curl_error($curl)]);
+        }
+       
     }
       
 }

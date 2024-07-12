@@ -1,0 +1,66 @@
+ERROR - 2024-04-20 15:59:47 --> Error connecting to the database: mysqli_sql_exception: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\tienda\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\xampp\htdocs\tienda\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('localhost', 'root', '', 'tienda', 3306, '', 0)
+#1 C:\xampp\htdocs\tienda\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\tienda\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\tienda\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\tienda\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\tienda\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\tienda\app\Validation\Userrules.php(24): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\tienda\system\Validation\Validation.php(311): App\Validation\Userrules->existsUser('1205150087', 'usuario', Array, NULL, 'usuario')
+#8 C:\xampp\htdocs\tienda\system\Validation\Validation.php(197): CodeIgniter\Validation\Validation->processRules('usuario', 'usuario', '1205150087', Array, Array)
+#9 C:\xampp\htdocs\tienda\system\Controller.php(152): CodeIgniter\Validation\Validation->run()
+#10 C:\xampp\htdocs\tienda\app\Controllers\Usuario.php(35): CodeIgniter\Controller->validate(Array, Array)
+#11 C:\xampp\htdocs\tienda\system\CodeIgniter.php(942): App\Controllers\Usuario->login()
+#12 C:\xampp\htdocs\tienda\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuario))
+#13 C:\xampp\htdocs\tienda\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#14 C:\xampp\htdocs\tienda\index.php(79): CodeIgniter\CodeIgniter->run()
+#15 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\xampp\htdocs\tienda\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\xampp\htdocs\tienda\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\tienda\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\tienda\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\tienda\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\tienda\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\tienda\app\Validation\Userrules.php(24): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\tienda\system\Validation\Validation.php(311): App\Validation\Userrules->existsUser('1205150087', 'usuario', Array, NULL, 'usuario')
+#7 C:\xampp\htdocs\tienda\system\Validation\Validation.php(197): CodeIgniter\Validation\Validation->processRules('usuario', 'usuario', '1205150087', Array, Array)
+#8 C:\xampp\htdocs\tienda\system\Controller.php(152): CodeIgniter\Validation\Validation->run()
+#9 C:\xampp\htdocs\tienda\app\Controllers\Usuario.php(35): CodeIgniter\Controller->validate(Array, Array)
+#10 C:\xampp\htdocs\tienda\system\CodeIgniter.php(942): App\Controllers\Usuario->login()
+#11 C:\xampp\htdocs\tienda\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuario))
+#12 C:\xampp\htdocs\tienda\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#13 C:\xampp\htdocs\tienda\index.php(79): CodeIgniter\CodeIgniter->run()
+#14 {main}
+CRITICAL - 2024-04-20 15:59:47 --> Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+WHERE `usuario` = :usuario:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Validation\Userrules.php(24): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\Validation\Validation.php(311): App\Validation\Userrules->existsUser('1205150087', 'usuario', [...], null, 'usuario')
+ 7 SYSTEMPATH\Validation\Validation.php(197): CodeIgniter\Validation\Validation->processRules('usuario', 'usuario', '1205150087', [...], [...])
+ 8 SYSTEMPATH\Controller.php(152): CodeIgniter\Validation\Validation->run()
+ 9 APPPATH\Controllers\Usuario.php(35): CodeIgniter\Controller->validate([...], [...])
+10 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Usuario->login()
+11 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Usuario))
+12 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-20 15:59:58 --> foreach() argument must be of type array|object, null given
+in APPPATH\Views\producto\listitemcarts.php on line 3.
+ 1 APPPATH\Views\producto\listitemcarts.php(3): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, null given', 'C:\\xampp\\htdocs\\tienda\\app\\Views\\producto\\listitemcarts.php', 3)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\xampp\\htdocs\\tienda\\app\\Views\\producto\\listitemcarts.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1190): CodeIgniter\View\View->render('producto/listitemcarts', [], true)
+ 5 APPPATH\Controllers\Carrito.php(28): view('producto/listitemcarts', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Carrito->viewProductosGrid()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carrito))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

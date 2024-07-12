@@ -34,7 +34,7 @@ header("Cache-Control: no-cache, must-revalidate");
     
     <form class="form-signin"  method="post" action="<?= base_url('login') ?>">
       <img class="mb-4" src="assets/imgs/logotienda.png" alt="" width="200" height="200">
-      <h1 class="h3 mb-3 font-weight-normal"><b>Autenticación</b></h1>
+      <h1 class="h3 mb-3 font-weight-normal"><b>Autenticación 2</b></h1>
       <?php if (isset($validation)) : ?>
             <div class="mb-3">
                <div class="alert alert-danger" role="alert">

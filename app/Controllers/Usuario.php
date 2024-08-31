@@ -15,7 +15,6 @@ class Usuario extends BaseController
                 'usuario' => 'required|min_length[3]|max_length[20]|existsUser[usuario]',
                 'clave' => 'required|min_length[8]|max_length[20]|validateUser[usuario,clave]',
             ];
-
             $errors = [
                 'usuario' => [
                     'required' => 'Ingrese su Usuario',
@@ -29,7 +28,6 @@ class Usuario extends BaseController
                     'min_length' => 'Clave debe contener mínimo 8 dígitos',
                     'max_length' => 'Clave debe contener máximo 20 dígitos'
                 ]
-                
             ];
 
             if (!$this->validate($rules, $errors)) {

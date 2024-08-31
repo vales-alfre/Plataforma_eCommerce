@@ -9,3 +9,10 @@ in APPPATH\Views\producto\listitemcarts.php on line 3.
  7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carrito))
  8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-31 14:48:23 --> Undefined array key "id"
+in APPPATH\Controllers\Carrito.php on line 128.
+ 1 APPPATH\Controllers\Carrito.php(128): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\tienda\\app\\Controllers\\Carrito.php', 128)
+ 2 SYSTEMPATH\CodeIgniter.php(942): App\Controllers\Carrito->responsePayPhone()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Carrito))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

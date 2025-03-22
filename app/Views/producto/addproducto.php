@@ -21,7 +21,7 @@
                                           <select id="regMarca" name="regMarca" class="custom-select" required>
                                             
                                           </select>
-                                        
+                                          <div class="valid-feedback">Marca válida</div>
                                         <div class="invalid-feedback">Seleccione una Marca</div>
                                     </div>
                                 </div>
@@ -50,7 +50,7 @@
 
                                     <div class="col-sm-4" style="margin: 0.5em 0.5em 0.5em 0.5em;">
                                         <label for="txtPrecio">Precio Costo</label>
-                                        <input type="number" class="form-control" id="txtPrecio" name="txtPrecio" step="0.01" value="0.00">
+                                        <input type="number" class="form-control" id="txtPrecio" name="txtPrecio" step="0.01" value="0.00" required>
                                         <small class="form-text text-muted">Introduce un número con hasta dos decimales.</small>
                     
                                         <div class="invalid-feedback">Precio Costo NO válido</div>
@@ -68,7 +68,7 @@
 
                                     <div class="col-sm-3" style="margin: 0.5em 0.5em 0.5em 0.5em;">
                                         <label for="txtImpuesto">% Impuesto</label>
-                                        <input type="number" class="form-control" id="txtImpuesto" name="txtImpuesto" step="0.01" value="0.00" max="12">
+                                        <input type="number" class="form-control" id="txtImpuesto" name="txtImpuesto" step="0.01" value="0.00" max="12" required>
                                         <small class="form-text text-muted">Introduce un número con hasta dos decimales.</small>
                                         
                                         <div class="invalid-feedback">Impuesto NO válido</div>
